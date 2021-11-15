@@ -1,0 +1,27 @@
+1.Escriba una consulta para saber cuántos estudiantes son de la carrera Mecánica.
+
+Select count(nombre)
+FROM INSCRIPCION I INNER JOIN CURSO C ON I.CURSO_codigo
+= C.codigo
+WHERE C.nombre = 'Mecánica';
+
+2.Escriba una consulta para saber, de la tabla PROFESOR, el salario mínimo de los profesores nacidos en la década del 80.
+
+SELECT MIN(Salario) as “Mínimo Salario”
+FROM PROFESOR WHERE fecha_nacimiento BETWEEN '1980' AND '1989';
+
+4.a. Cantidad de pasajeros por país
+
+select  p.nombre ,COUNT(*) as 'Cantidad de pasajeros' from PAIS p inner join PASAJERO pa on p.idpais =pa.idpais GROUP BY p.nombre;
+
+4.b. Suma de todos los pagos realizados
+
+select sum(PAGO.monto) as "Total de pagos realizados" from PAGO;
+
+4.c. Suma de todos los pagos que realizó un pasajero. El monto debe aparecer con dos decimales.
+
+select ROUND(sum(PAGO.monto),2) as "Total de pagos realizados por pasajero2" from PAGO where PAGO.idpasajero = 2;
+
+4.d. Promedio de los pagos que realizó un pasajero.
+
+select ROUND(AVG(PAGO.monto),2) as "Promedio de pagos realizados por pasajero 1" from PAGO where PAGO.idpasajero = 1;
